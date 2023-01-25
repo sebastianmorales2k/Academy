@@ -1,0 +1,34 @@
+<template>
+    <lightning-record-edit-form
+        record-id={recordId}
+        object-api-name=""
+        form-class="slds-p-horizontal_small"
+        onload={handleLoad}
+        onsubmit={hanldeSubmit}
+        onsuccess={handleSuccess}
+        field-names={fields}>
+        <lightning-messages></lightning-messages>
+        <lightning-card>
+            <h3 slot="title">
+                <lightning-icon icon-name="action:new_note" size="small"></lightning-icon>
+                Registrar intento de certificación
+            </h3>
+            <div slot="footer">
+                <lightning-button 
+                class="slds-m-top_small"
+                variant="brand"
+                type="submit"
+                name="registrar"
+                label="Registrar">
+            </lightning-button>
+            </div>
+
+            <template if:true={showSpinner}>
+                <lightning-spinner alternative-text="Cargando" size="small"></lightning-spinner>
+            </template>
+            <template if:true={error}>
+                Ocurrio un error: {error}
+            </template>
+        </lightning-card>
+    </lightning-record-edit-form>
+</template>

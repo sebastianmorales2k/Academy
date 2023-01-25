@@ -1,0 +1,48 @@
+<template>
+    <template if:true={modalIntento}>
+        <lightning-record-edit-form
+        object-api-name="Intento_de_certificacion__c"
+        form-class="slds-p-horizontal_small"
+        onsuccess={handleSuccess}>
+        <lightning-card>
+            <h3 slot="title">
+                <lightning-icon icon-name="action:new_note" size="small"></lightning-icon>
+                Registrar intento de certificación
+            </h3>
+            <lightning-card>
+                <lightning-input-field field-name="Tipo_de_intento__c"></lightning-input-field>
+                <lightning-input-field field-name={miembro} value={recordId} label="miembro asociado"></lightning-input-field>
+                <div hidden>
+                    <lightning-input-field field-name={tipoCerti} value={tipocer}></lightning-input-field>
+                    <lightning-input-field field-name={certificacion} value={certif}></lightning-input-field>
+                </div>
+            </lightning-card>
+            <lightning-card>
+                <h3>
+                    Registrar campos del resultado:
+                </h3>
+                <lightning-input-field field-name="Certificaciones_Salesforce__c"></lightning-input-field>
+                <lightning-input-field field-name="Aprueba__c"></lightning-input-field>
+                <lightning-input-field field-name="Resultado__c"></lightning-input-field>
+            </lightning-card>
+            
+            <div slot="footer">
+                <lightning-button 
+                    class="slds-m-top_small"
+                    variant="brand"
+                    type="submit"
+                    
+                    name="registrar"
+                    label="Registrar">
+                </lightning-button>
+            </div>
+        </lightning-card>
+    </lightning-record-edit-form>
+    </template>
+    
+    <template if:true={modalTabla}>
+        <lightning-card>
+            <c-registrar_seccion certif-id = {certifId}></c-registrar_seccion>
+        </lightning-card>
+    </template>
+</template>

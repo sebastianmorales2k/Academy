@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Resultados de sección" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <template if:true={secciones.data}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={secciones.data}
+                    columns={columns}
+                    onsave={handleSave}
+                    draft-values={draftValues}>
+                </lightning-datatable>
+            </template>
+            <template if:true={secciones.error}>
+                <!-- handle Apex error -->
+            </template>
+        </div>
+    </lightning-card>
+</template>
